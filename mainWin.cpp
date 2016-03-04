@@ -24,9 +24,9 @@ mainWin::mainWin()
 	// creates a grid for the window
 	QGridLayout *gridLayout = new QGridLayout;
 	gridLayout->addWidget(timer, 0,0,1,2);
-	gridLayout->addWidget(stopWatch, 1,0,1,2);
+	gridLayout->addWidget(stopWatch, 1,1,1,2);
 	gridLayout->addWidget(Clock,2,0,1,2);
-	gridLayout->addWidget(homework,3,0,1,2);
+	gridLayout->addWidget(homework,3,1,1,2);
 	MainWindow->setLayout(gridLayout);
 
 
