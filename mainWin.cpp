@@ -2,5 +2,5 @@
 
 mainWin::mainWin()
 {
-	resize(sizeHint());
+	
 }
