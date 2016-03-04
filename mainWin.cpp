@@ -1,4 +1,5 @@
 #include "GlobalHeader.h"
+#include "mainWin.h"
 
 mainWin::mainWin()
 {
@@ -30,4 +31,13 @@ mainWin::mainWin()
 	MainWindow->setLayout(gridLayout);
 
 
+	QClock = new QTClock(this);
+	connect(QClock, SIGNAL(tick(int)), this, SLOT(getTick(int)));
+
+
+}
+
+void mainWin::getTick(const int &info)
+{
+std::cerr << info << std::endl;
 }

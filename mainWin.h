@@ -1,6 +1,6 @@
 #pragma once
 #include "GlobalHeader.h"
-
+#include "QTClock.h"
 class CInsert;
 class QLabel;
 class QPushButton;
@@ -9,6 +9,7 @@ class QListWidget;
 class QListWidgetItem;
 class QTableView;
 
+
 class mainWin: public QMainWindow
 {
 Q_OBJECT
@@ -16,6 +17,8 @@ public:
 	//constructor
 	mainWin();
 
+public slots:
+	void getTick(const int &info);
 
 private:
 	//buttons leading to thier specific features
@@ -26,6 +29,8 @@ private:
 	// after widget is created main window will be hidden and after returning it will unhide
 QPushButton *timer, *stopWatch, *Clock, *homework;
 
+
+QTClock *QClock;
 
 
 };

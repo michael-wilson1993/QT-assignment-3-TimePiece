@@ -17,7 +17,5 @@
 #include <QtGui>
 #include <QMainWindow>
 #include <QList>
+#include <QTimer>
 
-	// my classes
-#include "mainWin.h"
-#include "QTClock.h"
