@@ -24,7 +24,7 @@ private:
 	// Clock: creates a world clock widget
 	// homework: creates a homework widget
 	// after widget is created main window will be hidden and after returning it will unhide
-QPushButton timer, stopWatch, Clock, homework;
+QPushButton *timer, *stopWatch, *Clock, *homework;
 
 
 
