@@ -2,6 +2,7 @@
 #include "GlobalHeader.h"
 #include "QTClock.h"
 #include "timer.h"
+#include "clockW.h"
 class CInsert;
 class QLabel;
 class QPushButton;
@@ -34,6 +35,7 @@ private:
 QPushButton *timer_b, *stopWatch_b, *Clock_b, *homework_b;
 
 timer *timer_w;
+clockW *clock_w;
 
 
 

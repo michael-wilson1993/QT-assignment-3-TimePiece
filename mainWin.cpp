@@ -14,6 +14,7 @@ mainWin::mainWin()
 	timer_b = new QPushButton("timer");
 	timer_b->setFont(font);
 
+
 	stopWatch_b = new QPushButton("stop watch");
 	stopWatch_b->setFont(font);
 
@@ -31,8 +32,10 @@ mainWin::mainWin()
 	gridLayout->addWidget(homework_b,3,1,1,2);
 	MainWindow->setLayout(gridLayout);
 
-	timer_w = new timer;
+	timer_w = new timer(this);
 	timer_w->show();
+	clock_w = new clockW(this);
+	clock_w->show();
 
 }
 

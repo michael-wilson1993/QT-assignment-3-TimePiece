@@ -1,6 +1,6 @@
 #include "timer.h"
 
-timer::timer()
+timer::timer(QWidget *parent) : QDialog(parent)
 {
 
 	painter = new Canvas(this);
@@ -17,12 +17,16 @@ timer::timer()
 	reset_b = new QPushButton("reset");
 	reset_b->setFont(font);
 
+	back_b = new QPushButton("main Menu");
+	back_b->setFont(font);
+
 	// creates a grid for the widget
 	QGridLayout *gridLayout = new QGridLayout;
-	gridLayout->addWidget(painter, 0,0,4,4);
+	gridLayout->addWidget(painter, 0,0,6,6);
 	gridLayout->addWidget(start_b, 5,0,1,2);
 	gridLayout->addWidget(pause_b, 5,2,1,2);
 	gridLayout->addWidget(reset_b, 5,4,1,2);
+	gridLayout->addWidget( back_b, 5,6,1,2);
 	setLayout(gridLayout);
 
 	// resizing the window
