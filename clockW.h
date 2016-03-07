@@ -4,6 +4,9 @@
 #include "canvas.h"
 #include <QDialog>
 
+#include <ctime>
+#include <iostream>
+
 // QT classes needed for GUI
 class QTimer;
 class Canvas;
@@ -17,8 +20,21 @@ class clockW : public QDialog
 	Q_OBJECT
 public:
 	clockW(QWidget *parent = 0);
+	void updateTime();
+
+public slots:
+	void animationTick(const int &info);
+	void timerReturn(const int &info);
+
+private slots:
+	void closeWin();
+
+
 private:
 	QPushButton *mainMenu_b;
+	QTClock *updateTick;
 	Canvas *painter;
+	int hour, minutes, seconds;
+	time_t ClockTime;
 
 };

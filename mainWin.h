@@ -3,6 +3,11 @@
 #include "QTClock.h"
 #include "timer.h"
 #include "clockW.h"
+#include "stopWatch.h"
+
+#include <string>
+#include <iostream>
+
 class CInsert;
 class QLabel;
 class QPushButton;
@@ -23,7 +28,12 @@ public slots:
 	//recieves information from the QTClock every second.
 	void getTick(const int &info);
 	// information sent back from a widget telling the main it show itself or hide itself.
-	void showMain(const bool &show);
+	void showMain(const char &name);
+	// slots to open the windows corrisponding to there names.
+	void openTimer();
+	void openStopWatch();
+	void openWorldClock();
+	void openHomeworkHelper();
 
 private:
 	//buttons leading to thier specific features
@@ -36,6 +46,7 @@ QPushButton *timer_b, *stopWatch_b, *Clock_b, *homework_b;
 
 timer *timer_w;
 clockW *clock_w;
+stopWatch *stopwatch_w;
 
 
 

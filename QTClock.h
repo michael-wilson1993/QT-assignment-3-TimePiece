@@ -6,7 +6,7 @@ class QTClock: public QWidget
 {
 	Q_OBJECT
 public:
-	QTClock(QWidget *parent = 0);
+	QTClock(bool timeTracker = false, int miliseconds = 1000, QWidget *parent = 0);
 
 	public slots:
 	void reset();
@@ -18,8 +18,13 @@ public:
 	void tick(const int &info);
 
 private:
+
 	//timer for the clock base
 QTimer *timer;
 int count;
+int iterationTime;
+bool keepTrack;
+
+
 
 };

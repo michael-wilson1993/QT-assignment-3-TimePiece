@@ -3,6 +3,7 @@
 clockW::clockW(QWidget *parent) : QDialog(parent)
 {
 
+	
 	painter = new Canvas(this);
 
 	// creates a QFont with size 16 and style is arial
@@ -21,5 +22,40 @@ clockW::clockW(QWidget *parent) : QDialog(parent)
 
 	// resizing the window
 	resize(1100,700); 
+
+	updateTick = new QTClock(false, 1000, this);
+	connect(updateTick, SIGNAL(tick(const int &)), this, SLOT(timerReturn(const int &)));
+}
+
+// got this function from "http://code.runnable.com/U2DKRsrlaUEEYt4f/get-the-current-local-time-with-ctime-for-c%2B%2B"
+// to get the machines current time
+void clockW::updateTime()
+{
+	struct tm *localTime;
+	time( &ClockTime );                   // Get the current time
+  	localTime = localtime( &ClockTime );  // Convert the current time to the local time
+  	hour = localTime->tm_hour;
+  	if(hour > 12)
+  		hour -= 12;
+  	
+  	minutes = localTime->tm_min;
+  	seconds = localTime->tm_sec;
+
+}
+
+void clockW::timerReturn(const int &info)
+{
+	updateTime();
+	std::cerr << hour << ":" << minutes << ":" << seconds << "\n\n";
+
+}
+
+void clockW::animationTick(const int &info)
+{
+
+}
+
+void clockW::closeWin()
+{
 
 }

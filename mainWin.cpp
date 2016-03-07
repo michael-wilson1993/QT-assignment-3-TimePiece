@@ -32,10 +32,16 @@ mainWin::mainWin()
 	gridLayout->addWidget(homework_b,3,1,1,2);
 	MainWindow->setLayout(gridLayout);
 
-	timer_w = new timer(this);
-	timer_w->show();
+	//timer_w = new timer(this);
+	//timer_w->show();
 	clock_w = new clockW(this);
 	clock_w->show();
+	// stopwatch_w = new stopWatch(this);
+	// stopwatch_w->show();
+
+	// connections
+	connect(timer_b, SIGNAL(clicked()), this, SLOT(openTimer()));
+	
 
 }
 
@@ -45,10 +51,34 @@ std::cerr << info << std::endl;
 
 }
 
-void mainWin::showMain(const bool &show)
+void mainWin::showMain(const char &name)
 {
-	if(show)
-		this->show();
-	else
-		this->hide();
+	if(name == 't' && timer_w != NULL)
+		delete timer_w;
+
+
+
+
+	//shows the main window again
+	show();
+}
+
+void mainWin::openTimer()
+{
+	timer_w = new timer(this);
+	timer_w->show();
+	connect(timer_w, SIGNAL( backToMain(const char &) ), this, SLOT( showMain(const char &) ));
+	hide();
+}
+void mainWin::openStopWatch()
+{
+
+}
+void mainWin::openWorldClock()
+{
+
+}
+void mainWin::openHomeworkHelper()
+{
+
 }

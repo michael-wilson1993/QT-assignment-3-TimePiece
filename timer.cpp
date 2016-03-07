@@ -2,7 +2,10 @@
 
 timer::timer(QWidget *parent) : QDialog(parent)
 {
-
+	hour = 0;
+	minutes = 0;
+	seconds = 0;
+	paused = true;
 	painter = new Canvas(this);
 
 	// creates a QFont with size 16 and style is arial
@@ -32,6 +35,13 @@ timer::timer(QWidget *parent) : QDialog(parent)
 	// resizing the window
 	resize(1100,700); 
 
+	// connections
+	connect(back_b, SIGNAL(clicked()), this , SLOT(closeWin()));
+	clock = new QTClock(false, 1000, this);
+	connect(clock, SIGNAL(tick(const int &)), this, SLOT(timerReturn(const int &)));
+	connect(start_b, SIGNAL(clicked()), this, SLOT(start_s()));
+	connect(pause_b, SIGNAL(clicked()), this, SLOT(pause_s()));
+	connect(reset_b, SIGNAL(clicked()), this, SLOT(reset_s()));
 }
 
 timer::~timer()
@@ -39,3 +49,56 @@ timer::~timer()
 
 }
 
+
+void timer::closeWin()
+{
+	const char temp = 't';
+	emit backToMain(temp);
+}
+
+void timer::animationTick(const int &info)
+{
+	//update canvas
+	//testing output
+	std::cerr << info << std::endl;
+}
+
+void timer::timerReturn(const int &info)
+{
+	if(!paused)
+		seconds++;
+	updateTime();
+	std::cerr << hour << ":" << minutes << ":" << seconds << "\n\n";
+}
+
+
+void timer::updateTime()
+{
+	if(seconds >= 60)
+	{
+		minutes++;
+		seconds = 0;
+	}
+	if(minutes >= 60)
+	{
+		hour++;
+		minutes = 0;
+	}
+}
+void timer::start_s()
+{
+	paused = false;
+}
+
+void timer::pause_s()
+{
+	paused = true;
+}
+
+void timer::reset_s()
+{
+	paused = true;
+	hour = 0; 
+	minutes = 0;
+	seconds = 0;
+}
