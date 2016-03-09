@@ -22,10 +22,15 @@ public:
 	clockW(QWidget *parent = 0);
 	~clockW();
 	void updateTime();
+	void setupObjects();
+
+signals:
+	void backToMain(const char &name);
 
 public slots:
 	void animationTick(const int &info);
 	void timerReturn(const int &info);
+
 
 private slots:
 	void closeWin();

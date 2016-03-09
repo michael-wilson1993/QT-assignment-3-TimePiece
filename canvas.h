@@ -8,6 +8,17 @@
 #include <iostream>
 #include <vector>
 
+struct WRect // helper struct that holds four ints that make up a rectangle.
+{
+  WRect(int xx, int yy, int ww, int hh)
+  {
+    x = xx;
+    y = yy;
+    w = ww;
+    h = hh;
+  };
+  int x, y, w, h;
+};
 
 class Canvas : public QWidget
 {
@@ -27,7 +38,7 @@ public:
    
 
 
-   void updateTime(int h,int m, int s) {hour=h;minutes=m;seconds=s;}; // updates the time
+   void updateTime(int h,int m, int s); // updates the time
    void insertObject(QTObject obj) {objects.push_back(obj);};
 
 
@@ -39,7 +50,6 @@ public:
      void paintEvent(QPaintEvent *);
   private:
     std::vector< QTObject > objects;
-    int hour, minutes, seconds;
-    QRect *hourW, *minuteW, *secondW;
+    WRect *hourW, *minutesW, *secondsW;
 
 };

@@ -20,7 +20,7 @@ class timer: public QDialog
 public:
 timer(QWidget *parent = 0);
 ~timer();
-
+void setupObjects();
 signals:
 	void backToMain(const char &name);
 

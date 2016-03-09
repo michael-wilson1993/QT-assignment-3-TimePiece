@@ -13,21 +13,22 @@
 // creates the objects
 Canvas::Canvas(QWidget *parent)
 {
-   hourW = new QRect(801,601,99,100);
-   minuteW = new QRect(551,601,199,100);
-   secondW = new QRect(201,600,299,100);
+   secondsW = new WRect(801,601,99,0);
+   minutesW = new WRect(551,601,199,0);
+   hourW = new WRect(201,600,299,0);
 }
 Canvas::~Canvas()
 {
    std::cerr << "canvas.h : deleted hour"<< std::endl;
    delete hourW;
-   delete minuteW;
-   delete secondW;
+   delete minutesW;
+   delete secondsW;
    std::cerr << "canvas.h : deleted hour - success "<< std::endl;
 }
 // slot so paint can be updated!
 void Canvas::updatePaint()
 {  
+
    update();
 }
 
@@ -36,11 +37,13 @@ void Canvas::paintEvent(QPaintEvent *event)
 {
    
    QPainter paint(this);
-   const QColor color(0,0,255);
+   const QColor color(28,183,235);
    paint.setPen(QPen(color, 2, Qt::SolidLine));
-   paint.fillRect(100,100,200,200,color);
-   //paint.fillRect(minuteW, color);
-   //paint.fillRect(secondW, color);
+   
+   paint.fillRect(hourW->x,hourW->y,hourW->w,hourW->h,color);
+   paint.fillRect(minutesW->x,minutesW->y,minutesW->w,minutesW->h,color);
+   paint.fillRect(secondsW->x,secondsW->y,secondsW->w,secondsW->h,color);
+
 
 
    //****Draws the shapes****
@@ -79,3 +82,10 @@ void Canvas::paintEvent(QPaintEvent *event)
 
 
 
+void Canvas::updateTime(int h,int m, int s)
+{
+   secondsW->h = s*-5;
+   minutesW->h = m*-5;
+   hourW->h = h*-25;
+   update();
+}

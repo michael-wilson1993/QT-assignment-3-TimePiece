@@ -43,6 +43,80 @@ timer::timer(QWidget *parent) : QDialog(parent)
 	connect(pause_b, SIGNAL(clicked()), this, SLOT(pause_s()));
 	connect(reset_b, SIGNAL(clicked()), this, SLOT(reset_s()));
 
+	
+	setupObjects();
+}
+
+timer::~timer()
+{
+	std::cerr << "timer.h : deleted lots"<< std::endl;
+	//delete clockTick;
+	//delete animTick;
+	delete start_b;
+	delete pause_b;
+	delete reset_b;
+	delete back_b;
+	//delete painter;
+	std::cerr << "timer.h : deleted lots - success "<< std::endl;
+}
+
+
+void timer::closeWin()
+{
+	const char temp = 't';
+	emit backToMain(temp);
+}
+
+void timer::animationTick(const int &info)
+{
+	//update canvas
+	//testing output
+	std::cerr << info << std::endl;
+}
+
+void timer::timerReturn(const int &info)
+{
+	if(!paused)
+		seconds++;
+	updateTime();
+	painter->updateTime(hour, minutes, seconds);
+	std::cerr << hour << ":" << minutes << ":" << seconds << "\n\n";
+}
+
+
+void timer::updateTime()
+{
+	if(seconds >= 60)
+	{
+		minutes++;
+		seconds = 0;
+	}
+	if(minutes >= 60)
+	{
+		hour++;
+		minutes = 0;
+	}
+}
+void timer::start_s()
+{
+	paused = false;
+}
+
+void timer::pause_s()
+{
+	paused = true;
+}
+
+void timer::reset_s()
+{
+	paused = true;
+	hour = 0; 
+	minutes = 0;
+	seconds = 0;
+}
+
+void timer::setupObjects()
+{
 	QTObject secondsGlass(0,0,0,false,false);
 	secondsGlass.nextCoor(800,280);
 	secondsGlass.nextCoor(800,600);
@@ -131,73 +205,4 @@ timer::timer(QWidget *parent) : QDialog(parent)
 	{
 		painter->insertObject(measure[x]);
 	}
-
-}
-
-timer::~timer()
-{
-	std::cerr << "timer.h : deleted lots"<< std::endl;
-	//delete clockTick;
-	//delete animTick;
-	delete start_b;
-	delete pause_b;
-	delete reset_b;
-	delete back_b;
-	//delete painter;
-	std::cerr << "timer.h : deleted lots - success "<< std::endl;
-}
-
-
-void timer::closeWin()
-{
-	const char temp = 't';
-	emit backToMain(temp);
-}
-
-void timer::animationTick(const int &info)
-{
-	//update canvas
-	//testing output
-	std::cerr << info << std::endl;
-}
-
-void timer::timerReturn(const int &info)
-{
-	if(!paused)
-		seconds++;
-	updateTime();
-	painter->updateTime(hour, minutes, seconds);
-	std::cerr << hour << ":" << minutes << ":" << seconds << "\n\n";
-}
-
-
-void timer::updateTime()
-{
-	if(seconds >= 60)
-	{
-		minutes++;
-		seconds = 0;
-	}
-	if(minutes >= 60)
-	{
-		hour++;
-		minutes = 0;
-	}
-}
-void timer::start_s()
-{
-	paused = false;
-}
-
-void timer::pause_s()
-{
-	paused = true;
-}
-
-void timer::reset_s()
-{
-	paused = true;
-	hour = 0; 
-	minutes = 0;
-	seconds = 0;
 }

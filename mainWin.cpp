@@ -41,6 +41,7 @@ mainWin::mainWin()
 
 	// connections
 	connect(timer_b, SIGNAL(clicked()), this, SLOT(openTimer()));
+	connect(Clock_b, SIGNAL(clicked()), this, SLOT(openWorldClock()));
 	
 
 }
@@ -67,6 +68,8 @@ void mainWin::showMain(const char &name)
 {
 	if(name == 't' && timer_w != NULL)
 		delete timer_w;
+	else if(name == 'c' && clock_w != NULL)
+		delete clock_w;
 
 
 
@@ -88,7 +91,10 @@ void mainWin::openStopWatch()
 }
 void mainWin::openWorldClock()
 {
-
+	clock_w = new clockW(this);
+	clock_w->show();
+	connect(clock_w, SIGNAL( backToMain(const char &) ), this, SLOT( showMain(const char &) ));
+	hide();
 }
 void mainWin::openHomeworkHelper()
 {
