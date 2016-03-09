@@ -34,8 +34,8 @@ mainWin::mainWin()
 
 	//timer_w = new timer(this);
 	//timer_w->show();
-	clock_w = new clockW(this);
-	clock_w->show();
+	//clock_w = new clockW(this);
+	//clock_w->show();
 	// stopwatch_w = new stopWatch(this);
 	// stopwatch_w->show();
 

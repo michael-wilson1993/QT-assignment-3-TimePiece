@@ -19,3 +19,5 @@
 #include <QList>
 #include <QTimer>
 
+#include "QTObject.h"
+
