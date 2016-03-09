@@ -20,6 +20,7 @@ class clockW : public QDialog
 	Q_OBJECT
 public:
 	clockW(QWidget *parent = 0);
+	~clockW();
 	void updateTime();
 
 public slots:

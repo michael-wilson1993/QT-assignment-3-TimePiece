@@ -37,8 +37,8 @@ timer::timer(QWidget *parent) : QDialog(parent)
 
 	// connections
 	connect(back_b, SIGNAL(clicked()), this , SLOT(closeWin()));
-	clock = new QTClock(false, 1000, this);
-	connect(clock, SIGNAL(tick(const int &)), this, SLOT(timerReturn(const int &)));
+	clockTick = new QTClock(false, 1000, this);
+	connect(clockTick, SIGNAL(tick(const int &)), this, SLOT(timerReturn(const int &)));
 	connect(start_b, SIGNAL(clicked()), this, SLOT(start_s()));
 	connect(pause_b, SIGNAL(clicked()), this, SLOT(pause_s()));
 	connect(reset_b, SIGNAL(clicked()), this, SLOT(reset_s()));
@@ -136,7 +136,15 @@ timer::timer(QWidget *parent) : QDialog(parent)
 
 timer::~timer()
 {
-
+	std::cerr << "timer.h : deleted lots"<< std::endl;
+	//delete clockTick;
+	//delete animTick;
+	delete start_b;
+	delete pause_b;
+	delete reset_b;
+	delete back_b;
+	//delete painter;
+	std::cerr << "timer.h : deleted lots - success "<< std::endl;
 }
 
 

@@ -38,7 +38,7 @@ private slots:
 private:
 	void updateTime();
 
-QTClock	*clock, *animTick;
+QTClock	*clockTick, *animTick;
 QPushButton *start_b, *pause_b, *reset_b, *back_b;
 Canvas *painter; 
 int hour, minutes, seconds;

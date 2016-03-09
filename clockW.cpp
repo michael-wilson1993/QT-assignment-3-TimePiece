@@ -26,6 +26,15 @@ clockW::clockW(QWidget *parent) : QDialog(parent)
 	updateTick = new QTClock(false, 1000, this);
 	connect(updateTick, SIGNAL(tick(const int &)), this, SLOT(timerReturn(const int &)));
 }
+clockW::~clockW()
+{
+	std::cerr << "ClockW.h : deleted painter"<< std::endl;
+	delete mainMenu_b;
+	delete updateTick;
+	delete painter;
+	std::cerr << "clockW.h : deleted painter - success "<< std::endl;
+}
+
 
 // got this function from "http://code.runnable.com/U2DKRsrlaUEEYt4f/get-the-current-local-time-with-ctime-for-c%2B%2B"
 // to get the machines current time

@@ -23,7 +23,7 @@ Q_OBJECT
 public:
 	//constructor
 	mainWin();
-
+	~mainWin();
 public slots:
 	//recieves information from the QTClock every second.
 	void getTick(const int &info);

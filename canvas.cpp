@@ -17,7 +17,14 @@ Canvas::Canvas(QWidget *parent)
    minuteW = new QRect(551,601,199,100);
    secondW = new QRect(201,600,299,100);
 }
-
+Canvas::~Canvas()
+{
+   std::cerr << "canvas.h : deleted hour"<< std::endl;
+   delete hourW;
+   delete minuteW;
+   delete secondW;
+   std::cerr << "canvas.h : deleted hour - success "<< std::endl;
+}
 // slot so paint can be updated!
 void Canvas::updatePaint()
 {  

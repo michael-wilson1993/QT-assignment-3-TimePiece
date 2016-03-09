@@ -13,3 +13,8 @@ QTObject::QTObject(int r,int g, int b, bool con, bool fill, QString textStr, int
 		text =false;
 	}
 }
+
+QTObject::~QTObject()
+{
+	//delet pointers if needed.
+}

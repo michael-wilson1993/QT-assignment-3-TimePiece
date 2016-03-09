@@ -17,6 +17,7 @@ class stopWatch : public QDialog
 	Q_OBJECT
 public:
 	stopWatch(QWidget *parent = 0);
+	~stopWatch();
 private:
 	QPushButton *mainMenu_b;
 	Canvas *painter;

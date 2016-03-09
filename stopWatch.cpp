@@ -23,3 +23,11 @@ stopWatch::stopWatch(QWidget *parent) : QDialog(parent)
 	resize(1100,700); 
 
 }
+
+stopWatch::~stopWatch()
+{
+	std::cerr << "stopWatch.h : deleted mainMenu_b"<< std::endl;
+	delete painter;
+	delete mainMenu_b;
+	std::cerr <<  "stopWatch.h : deleted mainMenu_b - success "<< std::endl;
+}

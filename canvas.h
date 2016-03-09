@@ -15,7 +15,8 @@ class Canvas : public QWidget
 
 public:
 
- Canvas(QWidget *parent = 0);
+  Canvas(QWidget *parent = 0);
+  ~Canvas();
 
  public slots:
    /*

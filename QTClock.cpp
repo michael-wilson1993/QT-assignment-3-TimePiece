@@ -10,7 +10,12 @@ QTClock::QTClock(bool timeTracker, int miliseconds, QWidget *parent): QWidget(pa
 	keepTrack = timeTracker;
 
 }
-
+QTClock::~QTClock()
+{
+	std::cerr << "QTClock.h : deleted timer"<< std::endl;
+	delete timer;
+	std::cerr << "QTClock.h : deleted timer - success "<< std::endl;
+}
 void QTClock::ClockLoop()
 {
 	// counts and sets timer to one second intervals

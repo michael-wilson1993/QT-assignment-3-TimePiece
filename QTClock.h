@@ -7,7 +7,7 @@ class QTClock: public QWidget
 	Q_OBJECT
 public:
 	QTClock(bool timeTracker = false, int miliseconds = 1000, QWidget *parent = 0);
-
+	~QTClock();
 	public slots:
 	void reset();
 

@@ -14,6 +14,7 @@ class QTObject
 {
 public:
 	QTObject(int r=255,int g=255, int b = 255, bool con = false, bool fill = false, QString textStr = "", int SX = 0, int SY = 0);
+	~QTObject();
 	void nextCoor(int x, int y) {shapes.push_back(coor(x,y));};
 	int red, green, blue;
 	// this will make the initial shape

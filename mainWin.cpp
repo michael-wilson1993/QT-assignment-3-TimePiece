@@ -44,6 +44,18 @@ mainWin::mainWin()
 	
 
 }
+mainWin::~mainWin()
+{
+	std::cerr << "mainWin.h : deleted timer"<< std::endl;
+	delete timer_b;
+	delete stopWatch_b;
+	delete Clock_b;
+	delete homework_b;
+	//delete timer_w;
+	//delete clock_w;
+	//delete stopwatch_w;
+	std::cerr << "mainWin.h : deleted timer - success " << std::endl;
+}
 
 void mainWin::getTick(const int &info)
 {
