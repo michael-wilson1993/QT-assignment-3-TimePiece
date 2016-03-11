@@ -3,6 +3,7 @@
 #include "QTClock.h"
 #include "canvas.h"
 #include <QDialog>
+#include "getTime.h"
 
 // QT classes needed for GUI
 class QTimer;
@@ -10,7 +11,9 @@ class Canvas;
 class QLabel;
 class QPushButton;
 class QGridgeLayout;
-
+class QComboBox;
+class QLineEdit;
+class QString;
 
 class stopWatch : public QDialog
 {
@@ -18,8 +21,34 @@ class stopWatch : public QDialog
 public:
 	stopWatch(QWidget *parent = 0);
 	~stopWatch();
+	void setupObjects();
+
+signals:
+	void backToMain(const char &name);
+
+
+public slots:
+	void closeWin();
+	void getTimeSlot(const int &hh, const int &mm, const int &ss);
+	void openGetTimeWin();
+	void tick(const int &time);
+	void closeGetTime();
+	void startTimer();
+	void stopTimer();
+
+
 private:
-	QPushButton *mainMenu_b;
+	int stringToInt(std::string changer);
+	QString IntToString(int changer);
+
+
+
+	QTClock *timer;
+	QPushButton *mainMenu_b, *start_b, *setTime_b, *pause_b;
 	Canvas *painter;
+	getTime *timeGetter;
+
+	int hour, minute, second;
+	bool paused, timesUp;
 
 };

@@ -9,7 +9,7 @@ clockW::clockW(QWidget *parent) : QDialog(parent)
 	// creates a QFont with size 16 and style is arial
 	QFont font("Arial", 16); 
 	//sets up the four buttons with there names and fonts
-	mainMenu_b = new QPushButton("start");
+	mainMenu_b = new QPushButton("back");
 	mainMenu_b->setFont(font);
 
 
@@ -25,8 +25,8 @@ clockW::clockW(QWidget *parent) : QDialog(parent)
 
 	updateTick = new QTClock(false, 1000, this);
 	connect(updateTick, SIGNAL(tick(const int &)), this, SLOT(timerReturn(const int &)));
-
-
+	connect(mainMenu_b, SIGNAL(clicked()), this, SLOT(closeWin()));
+	updateTime();
 	setupObjects();
 }
 clockW::~clockW()
