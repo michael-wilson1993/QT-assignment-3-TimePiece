@@ -37,7 +37,7 @@ private slots:
 
 
 private:
-	QPushButton *mainMenu_b;
+	QPushButton *mainMenu_b, *ampmDisp_b;
 	QTClock *updateTick;
 	Canvas *painter;
 	int hour, minutes, seconds;

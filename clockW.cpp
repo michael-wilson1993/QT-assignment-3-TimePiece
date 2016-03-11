@@ -12,10 +12,14 @@ clockW::clockW(QWidget *parent) : QDialog(parent)
 	mainMenu_b = new QPushButton("back");
 	mainMenu_b->setFont(font);
 
+	ampmDisp_b = new QPushButton("");
+	ampmDisp_b->setFont(font);
+	ampmDisp_b->setMinimumHeight(145);
 
 	// creates a grid for the widget
 	QGridLayout *gridLayout = new QGridLayout;
 	gridLayout->addWidget(painter, 0,0,6,6);
+	gridLayout->addWidget(ampmDisp_b, 0,0,2,1);
 
 	gridLayout->addWidget( mainMenu_b, 5,1,1,4);
 	setLayout(gridLayout);
@@ -48,8 +52,12 @@ void clockW::updateTime()
   	localTime = localtime( &ClockTime );  // Convert the current time to the local time
   	hour = localTime->tm_hour;
   	if(hour > 12)
+  	{
   		hour -= 12;
-  	
+  		ampmDisp_b->setText("PM");
+  	}
+  	else
+  		ampmDisp_b->setText("AM");
   	minutes = localTime->tm_min;
   	seconds = localTime->tm_sec;
 
