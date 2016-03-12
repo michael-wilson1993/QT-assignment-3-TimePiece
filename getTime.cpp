@@ -2,10 +2,14 @@
 
 getTime::getTime(bool GetCTime, QDialog *parent) : QDialog(parent)
 {
+	// setting up pop up windows properties
 	setWindowFlags(Qt::FramelessWindowHint | Qt::Popup);
 	setStyleSheet("background-color: grey;");
+	// is class is a value that determines weather we are grabbing a class name or not
 	isClass = GetCTime;
+	//resizing the window
 	resize(400,200); 
+	// initializing default time to 0
 	hour_flag = false; 
 	minute_flag = false;
 	second_flag = false;
@@ -13,21 +17,19 @@ getTime::getTime(bool GetCTime, QDialog *parent) : QDialog(parent)
 	QFont font("Arial", 16); 
 	//sets up the four buttons with there names and fonts
 	mainMenu_b = new QPushButton("Main Menu");
-	mainMenu_b->setFont(font);
-
 	setTime_b = new QPushButton("set time");
-	setTime_b->setFont(font);
-
-
 	hour_l = new QLabel("hour:");
 	minute_l = new QLabel("minute:");
 	second_l = new QLabel("second:");
 	class_l = new QLabel("class:");
+	setTime_b->setFont(font);
 	class_l->setFont(font);
 	hour_l->setFont(font);
 	minute_l->setFont(font);
 	second_l->setFont(font);
+	mainMenu_b->setFont(font);
 
+	// creating the new Qline edit to get the class name
 	classType = new QLineEdit();
 
 	//sets up the combo boxes
@@ -46,6 +48,8 @@ getTime::getTime(bool GetCTime, QDialog *parent) : QDialog(parent)
 
 
 	// creates a grid for the widget
+	// if true creates a window with QLineedit 
+	// else only time no Qline edit
 	if(GetCTime)
 	{
 		QGridLayout *gridLayout = new QGridLayout;
@@ -76,6 +80,7 @@ getTime::getTime(bool GetCTime, QDialog *parent) : QDialog(parent)
 		setLayout(gridLayout);
 		connect(setTime_b, SIGNAL(clicked()), this, SLOT(sendTimeSlot()));
 	}
+	//all the connections
 	connect(mainMenu_b, SIGNAL(clicked()), this, SLOT(closeGetTime()));
 	connect(hour_cb,SIGNAL(currentIndexChanged(const QString & )), this,SLOT(tripHourFlag(const QString & )));
 	connect(minute_cb,SIGNAL(currentIndexChanged(const QString & )), this, SLOT(tripMinuteFlag(const QString & )));

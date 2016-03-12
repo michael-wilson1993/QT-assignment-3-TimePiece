@@ -5,6 +5,7 @@ clockW::clockW(QWidget *parent) : QDialog(parent)
 
 	
 	painter = new Canvas(this);
+	painter->enableTop();
 
 	// creates a QFont with size 16 and style is arial
 	QFont font("Arial", 16); 
@@ -51,13 +52,20 @@ void clockW::updateTime()
 	time( &ClockTime );                   // Get the current time
   	localTime = localtime( &ClockTime );  // Convert the current time to the local time
   	hour = localTime->tm_hour;
+  	const QColor color(28,183,235);
   	if(hour > 12)
   	{
   		hour -= 12;
-  		ampmDisp_b->setText("PM");
+  		ampmDisp_b->setText("PM");	
+  		ampmDisp_b->setStyleSheet("background-color: #2F3F73");
   	}
   	else
+  	{
   		ampmDisp_b->setText("AM");
+  		ampmDisp_b->setStyleSheet("background-color: #FCBC00");
+  	}
+  		
+  	
   	minutes = localTime->tm_min;
   	seconds = localTime->tm_sec;
 

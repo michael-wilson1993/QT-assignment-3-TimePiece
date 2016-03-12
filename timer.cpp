@@ -6,7 +6,8 @@ timer::timer(QWidget *parent) : QDialog(parent)
 	minutes = 0;
 	seconds = 0;
 	paused = true;
-	painter = new Canvas(this);
+	painter = new Canvas( this);
+	painter->enableTop();
 
 	// creates a QFont with size 16 and style is arial
 	QFont font("Arial", 16); 

@@ -4,6 +4,8 @@ stopWatch::stopWatch(QWidget *parent) : QDialog(parent)
 {
 
 	painter = new Canvas(this);
+	
+
 	paused = true;
 	// creates a QFont with size 16 and style is arial
 	QFont font("Arial", 16); 

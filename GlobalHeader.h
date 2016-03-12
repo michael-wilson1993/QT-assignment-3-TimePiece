@@ -1,6 +1,9 @@
 /*
-	- author: Michael Wilson
-
+	- Michael Wilson
+	- GlobalHeader.h
+	- Human Computer Interaction
+	- prof: Wendy Osborn
+	- march 11/16
 	- Description: global header file so I dont have to rewrite includes for all headers
 */
 

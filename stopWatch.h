@@ -1,3 +1,12 @@
+/*
+	- Michael Wilson
+	- stopWatch.h
+	- Human Computer Interaction
+	- prof: Wendy Osborn
+	- march 11/16
+*/
+
+
 #pragma once
 #include "GlobalHeader.h"
 #include "QTClock.h"

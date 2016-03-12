@@ -1,8 +1,17 @@
+/*
+  - Michael Wilson
+  - canvas.h
+  - Human Computer Interaction
+  - prof: Wendy Osborn
+  - march 11/16
+*/
+
 #pragma once
 
 #include "QTObject.h"
 #include <QBrush>
 #include <QColor>
+#include "QTClock.h"
 #include <string>
 #include <QWidget>
 #include <iostream>
@@ -28,6 +37,7 @@ public:
 
   Canvas(QWidget *parent = 0);
   ~Canvas();
+  void enableTop() {DropBelow =false;};
 
  public slots:
    /*
@@ -37,9 +47,9 @@ public:
    void updatePaint();
    
 
-
-   void updateTime(int h,int m, int s); // updates the time
-   void insertObject(QTObject obj) {objects.push_back(obj);};
+  void animTick(const int &info);
+  void updateTime(int h,int m, int s); // updates the time
+  void insertObject(QTObject obj) {objects.push_back(obj);};
 
 
   protected:
@@ -49,7 +59,15 @@ public:
     */
      void paintEvent(QPaintEvent *);
   private:
+    void drop(bool h, bool m, bool s);
+    QTClock *animClock;
     std::vector< QTObject > objects;
+    QTObject *hourDrop, *minuteDrop, *secondDrop;
     WRect *hourW, *minutesW, *secondsW;
+    int hour,second, minute;
+
+    bool drawHD, drawMD, drawSD, initDrops;
+
+    bool DropBelow;
 
 };
